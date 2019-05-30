@@ -10,7 +10,7 @@ class HighScores
   end
 
   def personal_best
-    scores.max
+    personal_top_three.first
   end
 
   def personal_top_three
