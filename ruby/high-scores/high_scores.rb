@@ -6,7 +6,7 @@ class HighScores
   end
 
   def latest
-    scores.reject(&:zero?).min
+    scores.last
   end
 
   def personal_best
