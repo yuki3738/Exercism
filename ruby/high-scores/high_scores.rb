@@ -6,14 +6,14 @@ class HighScores
   end
 
   def latest
-    @scores.last
+    @latest ||= scores.last
   end
 
   def personal_best
-    personal_top_three.first
+    @personal_best ||= personal_top_three.first
   end
 
   def personal_top_three
-    @scores.max(3)
+    @personal_top_three ||= scores.max(3)
   end
 end
