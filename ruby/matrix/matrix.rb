@@ -1,12 +1,12 @@
 class Matrix
-  attr_reader :string_with_newlines
+  attr_reader :matrix
 
-  def initialize(string_with_newlines)
-    @string_with_newlines = string_with_newlines
+  def initialize(matrix)
+    @matrix = matrix
   end
 
   def rows
-    @rows ||= to_i_ary(string_with_newlines.split("\n").map(&:split))
+    @rows ||= matrix.lines.map { |line| line_to_row(line) }
   end
 
   def columns
@@ -15,7 +15,7 @@ class Matrix
 
   private
 
-  def to_i_ary(ary)
-    ary.map { |a| a.map(&:to_i) }
+  def line_to_row(line)
+    line.split.map(&:to_i)
   end
 end
