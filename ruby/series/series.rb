@@ -1,15 +1,15 @@
 class Series
-  attr_reader :digits
+  attr_reader :digits_ary
 
   def initialize(digits)
-    @digits = digits
+    @digits_ary = digits.chars
   end
 
   def slices(n)
-    raise ArgumentError if n > digits.length
+    raise ArgumentError if n > digits_ary.length
 
     slices = []
-    digits.split('').each_cons(n) do |digit|
+    digits_ary.each_cons(n) do |digit|
       slices << digit
     end
     slices.map do |slice|
