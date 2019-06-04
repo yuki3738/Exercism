@@ -13,7 +13,7 @@ class Series
       slices << digit
     end
     slices.map do |slice|
-      slices.join
+      slice.join
     end
   end
 end
