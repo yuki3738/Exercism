@@ -8,12 +8,6 @@ class Series
   def slices(n)
     raise ArgumentError if n > digits_ary.length
 
-    slices = []
-    digits_ary.each_cons(n) do |digit|
-      slices << digit
-    end
-    slices.map do |slice|
-      slice.join
-    end
+    digits_ary.each_cons(n).map(&:join)
   end
 end
