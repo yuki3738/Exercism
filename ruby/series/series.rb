@@ -1,15 +1,17 @@
 class Series
   def initialize(digits)
-    @digits_ary = digits.chars
+    @digits = digits.chars
   end
 
   def slices(n)
-    raise ArgumentError if n > digits_ary.length
-
-    digits_ary.each_cons(n).map(&:join)
+    unless n > digits.length
+      digits.each_cons(n).map(&:join)
+    else
+      raise ArgumentError
+    end
   end
 
   private
 
-  attr_reader :digits_ary
+  attr_reader :digits
 end
