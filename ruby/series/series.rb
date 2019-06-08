@@ -4,11 +4,9 @@ class Series
   end
 
   def slices(n)
-    unless n > digits.length
-      digits.each_cons(n).map(&:join)
-    else
-      raise ArgumentError
-    end
+    raise ArgumentError unless n <= digits.length
+
+    digits.each_cons(n).map(&:join)
   end
 
   private
