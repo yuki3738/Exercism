@@ -6,10 +6,12 @@ class Phrase
   end
 
   def word_count
-    ary = phrase.gsub(/!|&|@|\$|%|\^|&| '|' |,|\.|:/, ' ').split.map(&:downcase)
-
-    ary.each_with_object({}) do |item, result|
-      result[item] = ary.count(ary[ary.index(item)])
+    words.each_with_object({}) do |item, result|
+      result[item] = words.count(item)
     end
+  end
+
+  def words
+    phrase.gsub(/!|&|@|\$|%|\^|&| '|' |,|\.|:/, ' ').split.map(&:downcase)
   end
 end
