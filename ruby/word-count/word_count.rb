@@ -12,6 +12,6 @@ class Phrase
   end
 
   def words
-    phrase.gsub(/!|&|@|\$|%|\^|&| '|' |,|\.|:/, ' ').split.map(&:downcase)
+    phrase.scan(/\w+["']\w|\w+/).map(&:downcase)
   end
 end
