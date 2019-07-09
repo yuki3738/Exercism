@@ -12,6 +12,6 @@ class Phrase
   end
 
   def words
-    phrase.scan(/\w+["']\w|\w+/).map(&:downcase)
+    phrase.scan(/\b[\w']+\b/).map(&:downcase)
   end
 end
