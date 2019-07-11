@@ -3,6 +3,7 @@ class Triangle
 
   def initialize(sides)
     @sides = sides
+    @side_sum = sides.inject(:+)
   end
 
   def equilateral?
@@ -10,16 +11,15 @@ class Triangle
   end
 
   def isosceles?
-    sides[1] == sides[2] if triangle?
+    sides.uniq.count == 2 || equilateral? if triangle?
   end
 
   def scalene?
     return false if isosceles?
-    sides[0] != sides[1] && sides[0] != sides[2] && sides[1] != sides[2] if triangle?
+    sides.uniq.count == 3 if triangle?
   end
 
   def triangle?
-    sides.sort!
-    return sides.all? { |side| side > 0 } && sides[0] + sides[1] > sides[2]
+    sides.all? { |side| side > 0 } && sides.all? { |side| (@side_sum - side) >= side }
   end
 end
